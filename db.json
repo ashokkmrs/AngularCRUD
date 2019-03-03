@@ -1,42 +1,6 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "Ashok",
-      "age": "30",
-      "dob": "15/06/1990",
-      "email": "ashok@gmail.com",
-      "phone": "998687851",
-      "address": "Bangalore",
-      "visitdate": "15/06/2015",
-      "height": "30Feet",
-      "weight": "Ko"
-    },
-    {
-      "id": 3,
-      "name": "Ashokdgfdfg",
-      "age": "30",
-      "dob": "15/06/1990",
-      "email": "ashokjhgjg@gmail.com",
-      "phone": "998687851",
-      "address": "dfgdfg",
-      "visitdate": "15/06/2015",
-      "height": "30Feet",
-      "weight": "SS"
-    },
-    {
-      "id": 4,
-      "name": "kumar",
-      "age": "44",
-      "dob": "15/06/1990",
-      "email": "15/06/1990",
-      "phone": "998687851",
-      "address": "Bangalore",
-      "visitdate": "15/06/2015",
-      "height": "30Feet",
-      "weight": "SS"
-    },
-    {
       "id": 5,
       "name": "Ashokkumar",
       "age": "33",
@@ -87,33 +51,6 @@
   ],
   "visits": [
     {
-      "id": 1,
-      "lastVisit": "1/02/2019",
-      "doctorName": "Ashok",
-      "comments": "First visit",
-      "nextVisit": "12/02/2019",
-      "medicines": "hasjhas",
-      "others": "comments"
-    },
-    {
-      "id": 2,
-      "lastVisit": "2/02/2019",
-      "doctorName": "doctor1",
-      "comments": "second patient",
-      "nextVisit": "13/02/2019",
-      "medicines": "tkadskja",
-      "others": "comments"
-    },
-    {
-      "id": 3,
-      "lastVisit": "3/02/2019",
-      "doctorName": "doctor2",
-      "comments": "third patient",
-      "nextVisit": "14/02/2019",
-      "medicines": "akjwdk",
-      "others": "no comments"
-    },
-    {
       "id": 4,
       "lastVisit": "2019-03-09T18:30:00.000Z",
       "doctorName": "test",
@@ -127,7 +64,16 @@
       "lastVisit": "2019-03-17T11:28:10.000Z",
       "doctorName": "test",
       "comments": "test",
-      "nextVisit": "2019-03-17T11:28:10.000Z",
+      "nextVisit": "2019-03-23T18:30:00.000Z",
+      "medicines": "test",
+      "others": "bangalore"
+    },
+    {
+      "id": 6,
+      "lastVisit": "2019-03-10T11:40:28.000Z",
+      "doctorName": "test",
+      "comments": "test",
+      "nextVisit": "2019-03-24T11:40:28.000Z",
       "medicines": "test",
       "others": "bangalore"
     }
