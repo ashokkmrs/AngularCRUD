@@ -1,0 +1,119 @@
+<div class="container">
+
+  <div class="col-md-12">
+
+      <div class="alert alert-dark">
+      <h2>Add Visit</h2>
+    </div>
+
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="name">Last Visit:</label>
+                  <input 
+                      type="text" 
+                      formControlName="lastVisit" 
+                      placeholder="Last Visit" 
+                      name="lastVisit"
+                      class="form-control" 
+                      id="lastVisit"
+                      placement="right" 
+                      bsDatepicker
+                      [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-dark-blue' }"
+                  >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="doctorName">Doctor Name:</label>
+                    <input 
+                          formControlName="doctorName" 
+                          placeholder="Doctor Name" 
+                          name="doctorName" 
+                          class="form-control"
+                          id="doctorName"
+                          [ngClass]="{ 'is-invalid': submitted && f.doctorName.errors }"            
+                      >  
+                          <div *ngIf="submitted && f.doctorName.errors" class="invalid-feedback">
+                              <div *ngIf="f.doctorName.errors.required">DoctorName is required</div>
+                          </div> 
+                   
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="comments">Comments:</label>
+                    <input 
+                        type="text" 
+                        formControlName="comments" 
+                        placeholder="Comments" 
+                        name="comments" 
+                        class="form-control"
+                        id="comments"
+                        [ngClass]="{ 'is-invalid': submitted && f.comments.errors }"            
+                      >  
+                          <div *ngIf="submitted && f.comments.errors" class="invalid-feedback">
+                              <div *ngIf="f.comments.errors.required">Comments is required</div>
+                          </div>                     
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="nextVisit">Next Visit:</label>
+                   <input 
+                        formControlName="nextVisit" 
+                        placeholder="Next Visit" 
+                        name="nextVisit" 
+                        class="form-control"
+                        id="nextVisit"
+                        placement="right" 
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-dark-blue' }"
+                    >
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="medicines">Medicines Prescribed:</label>
+                    <input 
+                        formControlName="medicines" 
+                        placeholder="Medicines Prrescribed" 
+                        name="medicines" 
+                        class="form-control"
+                        id="medicines"
+                        [ngClass]="{ 'is-invalid': submitted && f.medicines.errors }"            
+                    >  
+                          <div *ngIf="submitted && f.medicines.errors" class="invalid-feedback">
+                              <div *ngIf="f.medicines.errors.required">Medicines is required</div>
+                          </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="others">Others:</label>
+                       <input 
+                            type="text" 
+                            formControlName="others" 
+                            placeholder="Others" 
+                            name="others" 
+                            class="form-control"
+                            id="others"
+                            [ngClass]="{ 'is-invalid': submitted && f.others.errors }"            
+                        >  
+                          <div *ngIf="submitted && f.others.errors" class="invalid-feedback">
+                              <div *ngIf="f.others.errors.required">Others is required</div>
+                          </div>
+                        
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary">Add Visit</button>
+      <a routerLink="/list-visit"><button class="btn btn-danger" style="margin-left:30px"> Close</button></a>
+    </form>
+  </div>
+</div>

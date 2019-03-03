@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+.container {
+    background-color: beige;
+    padding-bottom: 50px;
+    display:block;
+}
+
+table {
+    font-size: 0.9em;
+}
+.alert {
+    width: 100%; 
+    background-color: #007bff;   
+}
+.alert h2{
+    font-size: 1.6em;
+}

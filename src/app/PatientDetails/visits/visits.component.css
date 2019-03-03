@@ -1,0 +1,14 @@
+.fullwidth {
+    width: 100%;  
+    margin-bottom: 30px;  
+    margin-left: 20px;
+}
+
+.btn-primary,  .btn-primary:hover{
+    background-color:powderblue;
+    border: none;
+    color: black;
+}
+.activeUser{
+    margin: 30px;
+}

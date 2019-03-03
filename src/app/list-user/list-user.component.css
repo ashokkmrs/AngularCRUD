@@ -1,0 +1,31 @@
+.row {
+    background-color: beige;
+}
+
+.fullwidth {
+    width: 100%;  
+    margin-bottom: 30px;  
+    margin-left: 20px;
+}
+
+.btn-primary,  .btn-primary:hover{
+    background-color:powderblue;
+    border: none;
+    color: black;
+}
+
+/*Text input with search icon */
+#filtersubmit {
+    position: relative;
+    z-index: 1;
+    left: -25px;
+    top: 1px;
+    color: #7B7B7B;
+    cursor:pointer;
+    width: 0;
+}
+.search-container {
+    float:right; 
+    display: block;
+    margin-right: 30px;
+}
