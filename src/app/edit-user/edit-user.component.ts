@@ -16,10 +16,10 @@ export class EditUserComponent implements OnInit {
   editForm: FormGroup;
   submitted = false;
 
-
   constructor(private formBuilder: FormBuilder,private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+    
     let userId = localStorage.getItem("editUserId");
     if(!userId) {
       alert("Invalid action.")

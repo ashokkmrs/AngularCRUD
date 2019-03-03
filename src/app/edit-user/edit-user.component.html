@@ -51,9 +51,10 @@
                   name="dob" 
                   class="form-control" 
                   id="dob"                
-                  placement="left"               
-                  bsDatepicker
-                  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-dark-blue' }"
+                  placement="left"
+                  bsDatepicker   
+                  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"            
+                              
             >
            
          
@@ -130,9 +131,9 @@
                 class="form-control"        
                 id="visitdate"
                 placement="right"            
-                bsDatepicker
-                [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-dark-blue' }"
-        >
+                bsDatepicker     
+                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"           
+           >
       </div>
     </div>
     <div class="col-md-4">
