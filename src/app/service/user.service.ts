@@ -11,8 +11,13 @@ export class UserService {
   activeUser: User;
 
   getUsers() {
-    
-    return this.http.get<User[]>(this.baseUrl);
+    return this.http.get<User[]>(this.baseUrl)
+  }
+
+  getPaginatedUsers(pageNo: any, itemsPerPage: any) {
+    console.log("page no: ", pageNo, "items per page", itemsPerPage);
+    const options = { params: new HttpParams().set('_page', pageNo).set('_limit', itemsPerPage) };
+    return this.http.get<User[]>(this.baseUrl, options)
   }
 
   getUserById(id: number) {

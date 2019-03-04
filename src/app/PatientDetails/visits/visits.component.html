@@ -1,80 +1,116 @@
-<div class="container">   
-  
-    <div class="row">
-        <div *ngIf="activeUser" class="alert alert-dark">
-          <h2>Patient Detail Screen</h2>
-        </div>
+<div class="container">
+  <div class="row">
+    <div *ngIf="activeUser" class="alert alert-dark">
+      <h2>Patient Detail Screen</h2>
     </div>
- 
-    <div class="row">
-        <div *ngIf="activeUser">
-         <div class="activeUser">
-          <table>
-            <tr>
-              <td><b>Medical ID :</b></td>
-              <td >{{activeUser.id}}</td>
-              <td><b>Age :</b></td>
-              <td>{{activeUser.age}}</td>
-              <td><b>Phone :</b></td>
-              <td>{{activeUser.phone}}</td>
-              <td><b>Address :</b></td>
-              <td>{{activeUser.address}}</td>
-            </tr>
-            <tr>
-              <td><b>Name :</b></td>
-              <td>{{activeUser.name}}</td>
-              <td><b>D.O.B :</b></td>
-              <td>{{activeUser.dob}}</td>
-              <td><b>Email :</b></td>
-              <td v>{{activeUser.email}}</td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
-        </div>
-        </div>
   </div>
 
   <div class="row">
-      <div class="col-md-12">
+    <div *ngIf="activeUser">
+      <div class="activeUser">
+        <table>
+          <tr>
+            <td><b>Medical ID :</b></td>
+            <td>{{activeUser.id}}</td>
+            <td><b>Age :</b></td>
+            <td>{{activeUser.age}}</td>
+            <td><b>Phone :</b></td>
+            <td>{{activeUser.phone}}</td>
+            <td><b>Address :</b></td>
+            <td>{{activeUser.address}}</td>
+          </tr>
+          <tr>
+            <td><b>Name :</b></td>
+            <td>{{activeUser.name}}</td>
+            <td><b>D.O.B :</b></td>
+            <td>{{activeUser.dob}}</td>
+            <td><b>Email :</b></td>
+            <td v>{{activeUser.email}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 
-        <div class="alert alert-dark">
-          <h2>Visit Details</h2>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-dark">
+        <h2>Visit Details</h2>
+      </div>
+    </div>
+  </div>
 
-<div style="margin-bottom:20px;">
+  <div class="row">
+    <div class="col-md-12">    
         <button type="button" class="btn btn-primary" (click)="addVisit()">Add Visit</button>
         <a routerLink="/list-user"><button class="btn btn-link" style="float:right;"> Home</button>
         </a>
-  </div>
-    <table class="table table-striped" >
-        <thead class="thead-dark">
-        <tr>
-          <th class="hidden">Id</th>
-          <th>Last Visit</th>
-          <th>Doctor Name</th>
-          <th>Comments</th>
-          <th>Next Visit Date</th>
-          <th>Medicines Prescribed</th>
-          <th>Others</th>
-          <th colspan="2">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let visit of visits">
-          <td class="hidden">{{visit.id}}</td>
-          <td>{{visit.lastVisit}}</td>
-          <td>{{visit.doctorName}}</td>
-          <td>{{visit.comments}}</td>
-          <td>{{visit.nextVisit}}</td>
-          <td>{{visit.medicines}}</td>
-          <td>{{visit.others}}</td>
-          <td><i class="fas fa-trash-alt" (click)="deleteVisit(visit)"></i></td>
-          <td><i class="fas fa-edit" (click)="editVisit(visit)"></i></td>
+      </div>
+    </div>
+  
 
-        </tr>
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col-md-2 text-right">
+      <div class="form-inline formheight">
+        <div class="form-group">
+          <label for="sel1"><b>Per Page:</b></label>
+          <select class="form-control" id="sel1" (change)="countChanged($event)">
+            <option [value]="2">2</option>
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="50">50</option>
+            <option [value]="visitCount">All</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th class="hidden">Id</th>
+            <th>Last Visit</th>
+            <th>Doctor Name</th>
+            <th>Comments</th>
+            <th>Next Visit Date</th>
+            <th>Medicines Prescribed</th>
+            <th>Others</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let visit of visits">
+            <td class="hidden">{{visit.id}}</td>
+            <td>{{visit.lastVisit | date: 'dd/MM/yyyy'}}</td>
+            <td>{{visit.doctorName}}</td>
+            <td>{{visit.comments}}</td>
+            <td>{{visit.nextVisit | date: 'dd/MM/yyyy'}}</td>
+            <td>{{visit.medicines}}</td>
+            <td>{{visit.others}}</td>
+            <td><i class="fas fa-trash-alt" (click)="deleteVisit(visit)"></i></td>
+            <td><i class="fas fa-edit" (click)="editVisit(visit)"></i></td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination justify-content-end container">
+        <div class="row">
+          <div class="col-md-6"><b>Total Users Count :</b> {{visitCount}}</div>
+          <div class="col-md-6">
+            <pagination [totalItems]="visitCount" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage"
+              (pageChanged)="pageChanged($event)">
+            </pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

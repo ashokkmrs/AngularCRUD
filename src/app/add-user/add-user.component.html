@@ -1,181 +1,110 @@
 <div class="container">
 
 
-    <div class="alert alert-dark">
-        <h2>Add User</h2>
-      </div>
-      <div class="col-md-12">
-  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-   <div class="row">
-    <div class="col-md-4">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input 
-            type="text" 
-            formControlName="name" 
-            placeholder="Name" 
-            name="name" 
-            class="form-control" 
-            id="name"
-            [ngClass]="{ 'is-invalid': submitted && f.name.errors }"            
-        >  
-            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                 <div *ngIf="f.name.errors.required">Name is required</div>
-            </div>     
-      </div>
-    </div>
-    <div class="col-md-4">
-    <div class="form-group">
-      <label for="age">Age:</label>
-      <input 
-          formControlName="age" 
-          placeholder="age" 
-          name="age" 
-          class="form-control" 
-          id="age"
-          numbersOnly
-          [ngClass]="{ 'is-invalid': submitted && f.age.errors }"            
-       >  
-            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
-                 <div *ngIf="f.age.errors.required">Age is required</div>
-            </div>  
-    </div>
-    </div>
-    <div class="col-md-4">
-    <div class="form-group">
-        <label for="dateOfBirth">D.O.B:</label>
-        
-           <input 
-                type="text"
-                formControlName="dob" 
-                placeholder="dob" 
-                name="dob" 
-                class="form-control" 
-                id="dob"                
-                placement="left"               
-                bsDatepicker               
-          >
-         
-       
-    </div>
-    </div>
+  <div class="alert alert-dark">
+    <h2>Add User</h2>
   </div>
+  <div class="col-md-12">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" placeholder="Name" name="name" class="form-control" id="name"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+          </div>
+        </div>
 
-  <div class="row">
-    <div class="col-md-4">
-    <div class="form-group">
-      <label for="phone">Phone:</label>
-           <input 
-                formControlName="phone" 
-                placeholder="phone" 
-                name="phone" 
-                class="form-control" 
-                id="phone"
-                numbersOnly
-                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"            
-             >  
-                  <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                       <div *ngIf="f.phone.errors.required">phone is required</div>
-                  </div>           
-           
-    </div>
-  </div> 
-  <div class="col-md-4">
-    <div class="form-group">
-      <label for="email">Email:</label>
-            <input 
-                type="email" 
-                formControlName="email" 
-                placeholder="email" 
-                name="dob" 
-                class="form-control" 
-                id="email"
-                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-            >
-           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="dateOfBirth">D.O.B:</label>
+            <input type="text" formControlName="dob" placeholder="dob" name="dob" class="form-control" id="dob"
+              placement="left" (bsValueChange)="calculateAge($event)" bsDatepicker>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input formControlName="age" placeholder="age" name="age" readonly class="form-control" id="age" numbersOnly
+              [ngClass]="{ 'is-invalid': submitted && f.age.errors }">
+            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+              <div *ngIf="f.age.errors.required">Age is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input formControlName="phone" placeholder="phone" name="phone" class="form-control" id="phone" numbersOnly
+              [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+              <div *ngIf="f.phone.errors.required">phone is required</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" formControlName="email" placeholder="email" name="dob" class="form-control" id="email"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
               <div *ngIf="f.email.errors.required">Email is required</div>
               <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
           </div>
-    </div>
-  </div>
- 
-  
-  <div class="col-md-4">
-    <div class="form-group">
-      <label for="address">Address:</label>
-           <textarea  
-                formControlName="address" 
-                placeholder="address" 
-                name="address" 
-                class="form-control" 
-                id="address"
-                [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
-           >
-          </textarea>
-           <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-            <div *ngIf="f.address.errors.required">Address is required</div>
         </div>
-    </div>
-  </div>
-</div>
- 
-  <div class="row">
-  <div class="col-md-4">
-    <div class="form-group">
-      <label for="visitdate">Visit date:</label>
-          <input 
-              formControlName="visitdate" 
-              placeholder="visitdate" 
-              name="visitdate" 
-              class="form-control"        
-              id="visitdate"
-              placement="right"            
-              bsDatepicker
-             
-      >
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="form-group">
-      <label for="height">Height:</label>
-     <input  
-          formControlName="height" 
-          placeholder="height" 
-          name="height" 
-          class="form-control" 
-          id="height"
-          numbersOnly
-      >  
-          <!--<select class="form-control" id="height">
-          <option value='CMs'>CMs</option>
-          <option value='Feet'>Feet</option>         
-        </select>    -->
-    </div>
-  </div>
 
-  <div class="col-md-4">
-    <div class="form-group">
-      <label for="weight">Weight:</label>
-      <input  
-          formControlName="weight" 
-          placeholder="weight" 
-          name="weight" 
-          class="form-control" 
-          id="weight"     
-          numbersOnly  
-       >
-         
-      <!--<select class='form-control'id="weight">
-          <option value='KO'>KO</option>
-          <option value='LBs'>LBs</option>       
-     </select>       -->  
-    </div>
-  </div>
-  </div>
 
-    <button class="btn btn-primary">Save</button>
-    <span style="margin-left:30px"><a routerLink="/list-user"><button class="btn btn-danger" > Close</button></a></span>
-    
-  </form>
-</div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea formControlName="address" placeholder="address" name="address" class="form-control" id="address"
+              [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+          </textarea>
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+              <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="visitdate">Visit date:</label>
+            <input formControlName="visitdate" placeholder="visitdate" name="visitdate" class="form-control"
+              id="visitdate" placement="right" bsDatepicker>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="height">Height:</label>
+            <input formControlName="height" placeholder="height" name="height" class="form-control" id="height"
+              numbersOnly> 
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="weight">Weight:</label>
+            <input formControlName="weight" placeholder="weight" name="weight" class="form-control" id="weight"
+              numbersOnly>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary">Save</button>
+      <span style="margin-left:30px"><a routerLink="/list-user"><button class="btn btn-danger">
+            Close</button></a></span>
+
+    </form>
+  </div>
 </div>

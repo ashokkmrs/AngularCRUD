@@ -1,57 +1,93 @@
 <div class="container">
-    <div class="row">
-        <div class="alert alert-dark">
-          <h2>Patient Management</h2>
-        </div>
+  <div class="row">
+    <div class="alert alert-dark">
+      <h2>Patient Management</h2>
+    </div>
   </div>
-        <div class="row">
-        <div class="fullwidth">
-            <button type="button" class="btn btn-primary" (click)="addUser()" style="float:left">Add Patient</button>
+  <div class="row">
 
-                <div class="search-container">
-                    <!-- Actual search box -->                                       
-                  <input type="text" #search_input placeholder="Search.." name="search">
-                  <i id="filtersubmit" class="fa fa-search" (click)="search(search_input)"></i>
-                 
-                </div>
+    <div class="col-md-8">
+      <button type="button" class="btn btn-primary" (click)="addUser()" style="float:left">Add Patient</button>
+    </div>   
+
+    <div class="col-md-4">
+      <div class="search-container">
+        <!-- Actual search box -->
+        <input type="text" #search_input placeholder="Search.." name="search">
+        <i id="filtersubmit" class="fa fa-search" (click)="search(search_input)"></i>
+      </div>
+    </div>
+
+  </div>
+
+
+<div class="row">
+
+    <div class="col-md-10"></div>
+    <div class="col-md-2 text-right">        
+          <div class="form-inline formheight" >
+          <div class="form-group">
+            <label for="sel1" ><b>Per Page:</b></label>
+            <select class="form-control" id="sel1" (change)="countChanged($event)">
+              <option [value]="2">2</option>
+              <option [value]="5">5</option>
+              <option [value]="10">10</option>
+              <option [value]="50">50</option>
+              <option [value]="userCount">All</option>
+            </select>
+          </div>
+        </div>
+        
+      </div>
+</div>
+
+
+  <div class="row">
+    <table class="table table-striped" style="margin:0px 10px 0px 10px;">
+      <thead class="thead-dark">
+        <tr>
+          <th class="hidden">Id</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>D.O.B</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Visit date</th>
+          <th>Height</th>
+          <th>Weight</th>
+          <th colspan="3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="hidden">{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.age}}</td>
+          <td>{{user.dob | date: 'dd/MM/yyyy' }}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.address}}</td>
+          <td>{{user.visitdate | date: 'dd/MM/yyyy'}}</td>
+          <td>{{user.height}}</td>
+          <td>{{user.weight}}</td>
+          <td><i class="fas fa-trash-alt" (click)="deleteUser(user)"></i></td>
+          <td><i class="fas fa-edit" (click)="editUser(user)"></i></td>
+          <td><i class="fas fa-eye" (click)="setActiveUser(user)"></i></td>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <div class="pagination justify-content-end container">
+      <div class="row">
+        <div class="col-md-8"><b>Total Users Count :</b> {{userCount}}</div>
+        <div class="col-md-4">
+          <pagination [totalItems]="userCount" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage"
+            (pageChanged)="pageChanged($event)">
+          </pagination>
         </div>
       </div>
-  <div class="row">
-  <table class="table table-responsive table-striped"  style="margin:0px 10px 0px 10px;">
-      <thead class="thead-dark">
-      <tr>
-        <th class="hidden">Id</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>D.O.B</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Visit date</th>
-        <th>Height</th>
-        <th>Weight</th>
-        <th colspan="3">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users" >
-        <td class="hidden">{{user.id}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.age}}</td>
-        <td>{{user.dob }}</td>
-        <td>{{user.phone}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.address}}</td>
-        <td>{{user.visitdate}}</td>
-        <td>{{user.height}}</td>
-        <td>{{user.weight}}</td>
-        <td><i class="fas fa-trash-alt" (click)="deleteUser(user)"></i></td>
-        <td><i class="fas fa-edit" (click)="editUser(user)"></i></td>
-        <td><i class="fas fa-eye" (click)="setActiveUser(user)"></i></td>
-      </tr>
-    </tbody>
+    </div>
 
-  </table>
-</div>
-
-</div>
+  </div>

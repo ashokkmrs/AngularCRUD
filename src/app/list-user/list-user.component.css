@@ -1,5 +1,5 @@
 .row {
-    background-color: beige;
+    background-color:#F2F5F4;
 }
 
 .fullwidth {
@@ -28,4 +28,18 @@
     float:right; 
     display: block;
     margin-right: 30px;
+}
+.pagination {
+    margin: 20px;
+    flex: auto;
+}
+select {
+    width: 100px;
+    float: right;
+}
+.formheight {
+    margin: 20px 0px 20px 0px;
+}
+.formheight label {
+    margin-right: 20px;
 }

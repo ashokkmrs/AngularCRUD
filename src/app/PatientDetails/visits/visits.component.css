@@ -3,7 +3,6 @@
     margin-bottom: 30px;  
     margin-left: 20px;
 }
-
 .btn-primary,  .btn-primary:hover{
     background-color:powderblue;
     border: none;
@@ -11,4 +10,14 @@
 }
 .activeUser{
     margin: 30px;
+}
+select {
+    width: 100px;
+    float: right;
+}
+.formheight {
+    margin: 20px 0px 20px 0px;
+}
+.formheight label {
+    margin-right: 20px;
 }

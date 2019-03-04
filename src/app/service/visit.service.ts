@@ -31,5 +31,11 @@ export class VisitService {
   deleteVisit(id: number) {
     return this.http.delete(this.baseUrl + '/' + id);
   }
+  getPaginatedVisits(pageNo: any, itemsPerPage: any) {
+    console.log("page no: ", pageNo, "items per page", itemsPerPage);
+    const options = { params: new HttpParams().set('_page', pageNo).set('_limit', itemsPerPage) };
+    return this.http.get<Visit[]>(this.baseUrl, options)
+  }
+
   
 }
